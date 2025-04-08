@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div>
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <div id="chatOutput"></div>
+
+    <script>
+        function sendMessage() {
+            let message = $('#userInput').val();
+            $.get('/get/', {userMessage: message}, function(data) {
+                $('#chatOutput').append('<p>Bot: ' + data.response + '</p>');
+                $('#userInput').val('');
+            });
+        }
+
+        $('#userInput').keypress(function(e) {
+            if (e.which == 13) {  
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
