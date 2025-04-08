@@ -4,7 +4,7 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 
 
 def get_chatbot():
-    bot = Chatbot("chatbot", read_only=False, logic_adapters=[
+    bot = ChatBot("chatbot", read_only=False, logic_adapters=[
         {
             "import_path": "chatterbot.logic.BestMatch",
             "default_response": "Sorry am not conversate with that",
